@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type f -name '*.gif' -print0 | xargs -0 -I {} sh -c 'echo "${1%.*}"' _ {}
+find . -type f -iname "*.gif" -exec bash -c 'echo "${1%.*}"' _ {} \ | sort -f
