@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type f -name "*.[gG][iI][fF]" -o -name ".*.[gG][iI][fF]" | rev | cut -d'/' -f1 | rev | cut -d'.' -f1 | LC_ALL=C sort -f
+find . -type f \( -iname "*.gif" -o -iname ".*.gif" \) -printf "%f\n" | sed 's/\.gif$//I' | LC_ALL=C sort -f
