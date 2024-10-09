@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# This script displays the content of the current directory after the first dash
+# shellcheck disable=SC2034
+
+for file in *; do
+  if [[ -f "$file" && "$file" != .* ]]; then
+    # Get the part after the first dash
+    name="${file#*-}"
+    echo "$name"
+  fi
+done
+
