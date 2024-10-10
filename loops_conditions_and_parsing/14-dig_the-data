@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-# This script groups and counts occurrences of IP and HTTP status code in the Apache log
-# shellcheck disable=SC2034
+# Script that groups visitors by IP and HTTP status code
 
-# Process the apache-access.log file
-awk '{print $1, $9}' apache-access.log | awk '{count[$0]++} END {for (i in count) print count[i], i}' | sort -rn
-
+awk '{ print $1 " " $9}' apache-access.log | sort | uniq -c | sort -rn | awk '{print "    " $1 " " $2 " " $3}'
