@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Displays a list of currently running processes for all users, including those without a TTY, in a user-oriented format with process hierarchy
 
 # Use ps command with options:
 # -e: select all processes
