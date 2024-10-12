@@ -2,5 +2,14 @@
 # This script displays the PID and process name of processes containing the word 'bash'.
 # shellcheck disable=SC2009
 
-pgrep -a bash
+# Loop through each PID of processes that contain 'bash'
+for pid in $(pgrep bash); do
+    # Read the command line from /proc/PID/cmdline, replacing null characters with spaces
+    cmdline=$(tr '\0' ' ' < /proc/$pid/cmdline 2>/dev/null)
+    
+    # Print the PID and the command line (full path) if available
+    if [[ -n "$cmdline" ]]; then
+        echo "$pid $cmdline"
+    fi
+done
 
