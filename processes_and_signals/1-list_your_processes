@@ -6,4 +6,4 @@
 # -o: specify output format
 # --forest: show process hierarchy
 
-ps -e -o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,comm --forest
+ps -e -o user,lstart,cmd --forest | awk '{printf "%-10s %-8s %s\n", $1, $5, substr($0, index($0,$6))}'
