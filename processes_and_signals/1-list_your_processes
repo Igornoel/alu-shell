@@ -1,5 +1,8 @@
-#!/usr/bin/env bash
-# This script displays a list of currently running processes for all users.
+#!/bin/bash
 
-ps -eo uid,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command --forest
+# Use ps command with options:
+# -e: select all processes
+# -o: specify output format
+# --forest: show process hierarchy
 
+ps -e -o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,comm --forest
